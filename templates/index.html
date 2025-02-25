@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brain Tumor Classification</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="file">Please upload MRI image of brain:</label>
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Classify Image</button>
+    </form>
+
+    {% if results %}
+    <h2>Prediction Results</h2>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Predicted Category</th>
+            <th>Confidence</th>
+            <th>Prediction Distribution</th>
+        </tr>
+        {% for model, result in results.items() %}
+        <tr>
+            <td>{{ model }}</td>
+            <td>{{ result.predicted_label }}</td>
+            <td>{{ result.confidence }}</td>
+            <td>
+                {% for label, prob in result.prediction_distribution.items() %}
+                    {{ label }}: {{ prob }}<br>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
