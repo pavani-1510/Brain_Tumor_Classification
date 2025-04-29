@@ -6,91 +6,157 @@
     <title>Brain Tumor Classification</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
             text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 50px 0;
         }
 
         h1 {
-            color: #333;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
         }
 
         form {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: inline-block;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-bottom: 15px;
+            display: block;
         }
 
         input[type="file"] {
-            margin: 10px 0;
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            margin-bottom: 20px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="file"]:focus {
+            border-color: #3498db;
         }
 
         button {
-            background: #4CAF50;
+            background-color: #3498db;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            width: 100%;
             cursor: pointer;
-            font-size: 1em;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background: #45a049;
+            background-color: #2980b9;
         }
 
         table {
-            margin: 20px auto;
-            border-collapse: collapse;
             width: 80%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+            border-collapse: collapse;
+            font-size: 1em;
         }
 
         table th, table td {
-            padding: 10px;
+            padding: 12px 20px;
             border: 1px solid #ddd;
+            text-align: center;
         }
 
         table th {
-            background: #4CAF50;
+            background-color: #3498db;
             color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .success-message {
+            color: #000000;
+            font-weight: bold;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+
     <h1>Brain Tumor Classification</h1>
+
     <form action="/predict" method="post" enctype="multipart/form-data">
-        <label for="file">Please upload MRI image of brain:</label>
+        <label for="file">Upload MRI Image:</label>
         <input type="file" name="file" accept="image/*" required>
         <button type="submit">Classify Image</button>
     </form>
 
-    {% if results %}
-    <h2>Prediction Results</h2>
-    <table>
-        <tr>
-            <th>Model</th>
-            <th>Predicted Category</th>
-            <th>Confidence</th>
-            <th>Prediction Distribution</th>
-        </tr>
-        {% for model, result in results.items() %}
-        <tr>
-            <td>{{ model }}</td>
-            <td>{{ result.predicted_label }}</td>
-            <td>{{ result.confidence }}</td>
-            <td>
-                {% for label, prob in result.prediction_distribution.items() %}
-                    {{ label }}: {{ prob }}<br>
-                {% endfor %}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    {% if error %}
+    <div class="error-message">
+        ⚠️ {{ error }}
+    </div>
     {% endif %}
+
+    {% if results %}
+    <div class="success-message">
+        <h2>Prediction Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Predicted Category</th>
+                    <th>Confidence</th>
+                    <th>Prediction Distribution</th>
+                    <th>Model Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model, result in results.items() %}
+                <tr>
+                    <td>{{ model }}</td>
+                    <td>{{ result.predicted_label }}</td>
+                    <td>{{ result.confidence }}</td>
+                    <td>
+                        {% for label, prob in result.prediction_distribution.items() %}
+                        {{ label }}: {{ prob }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ accuracies[model] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
 </body>
 </html>
