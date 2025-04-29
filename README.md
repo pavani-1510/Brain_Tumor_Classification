@@ -1,66 +1,46 @@
-# Brain Tumor Classification of MRI Images
+# Credit Card Fraud Detection Using Machine Learning
 
-## Introduction
-Brain tumors are one of the most life-threatening medical conditions. Early and accurate diagnosis is crucial for effective treatment. Manual diagnosis is time-consuming and prone to human error. This project aims to enhance diagnostic accuracy using AI-driven image classification to categorize brain tumor MRI images into four classes:
-- Glioma
-- Healthy
-- Meningioma
-- Pituitary
+## Overview
+Credit card fraud poses a significant threat to financial security, affecting millions of transactions globally. This project aims to develop an effective fraud detection system by leveraging machine learning techniques. The objective is to improve detection accuracy, reduce false positives, and provide a robust fraud prevention mechanism.
+
+## Team Members
+- **M Sahitya** (2200031651)
+- **M Jhansi** (2200031441)
+- **R Pavani** (2200033283)
 
 ## Problem Statement
-Distinguishing between various types of brain tumors is complex. Misclassification can lead to incorrect treatment and adverse patient outcomes. This project aims to develop a reliable, automated system for brain tumor classification using deep learning models.
+Traditional fraud detection methods often struggle with accuracy due to the highly imbalanced nature of fraud datasets, where fraudulent transactions are rare compared to legitimate ones. This project addresses these challenges using advanced machine learning models and feature selection techniques to enhance fraud detection performance.
 
-## Dataset Overview
-- **Description:** MRI dataset with four classes: Glioma, Healthy, Meningioma, and Pituitary.
-- **Sources:**  
-  - [Kaggle Dataset 1](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset/data)
-  - [Kaggle Dataset 2](https://www.kaggle.com/datasets/murtozalikhon/brain-tumor-multimodal-image-ct-and-mri)
-- **Data Distribution:**
-  - Glioma: 2293 images
-  - Healthy: 4000 images
-  - Meningioma: 2757 images
-  - Pituitary: 2386 images
+## Technologies Used
+- **Amazon SageMaker** for model training and deployment
+- **Python** for data processing and analysis
+- **Scikit-learn** and **TensorFlow** for machine learning model implementation
+- **AWS** for cloud computing and scalability
 
-## Preprocessing Techniques
-Objective: Prepare MRI images for model training.
-- **Resizing:** Standardized to (128, 128) pixels.
-- **Normalization:** Pixel values scaled to [0, 1].
-- **Data Augmentation:** Applied rotation, flipping, zooming, and brightness adjustment for better generalization.
-- **Class Balancing:** Addressed class imbalance using oversampling.
-- **Tools Used:** OpenCV, Keras ImageDataGenerator.
+## Dataset
+The dataset used consists of anonymized credit card transactions with a significant class imbalance. Advanced resampling and feature engineering techniques are applied to ensure accurate fraud identification.
+[Online Fraud Detection Dataset](https://www.kaggle.com/datasets/rizwanash/onlinefraud/data)
 
-## Project Workflow
-1. Data Collection and Exploration
-2. Data Preprocessing
-3. Model Selection and Architecture Design
-4. Model Training and Validation
-5. Performance Evaluation
-6. Model Comparison and Selection
+## Machine Learning Models Used
+- **Random Forest**
 
-## Model Architecture
-Implemented and compared multiple models:
-- **VGG16**
-- **ResNet50**
-- **MobileNetV2**
-- **Custom CNN Architecture**
+## Approach
+1. **Data Preprocessing**
+   - Handling missing values and outliers
+   - Feature scaling and transformation
+2. **Feature Selection**
+   - Optimizing input variables to enhance classifier performance
+3. **Model Training & Evaluation**
+   - Comparing different machine learning models
+   - Measuring accuracy, precision, recall, and F1-score
+4. **Deployment with Amazon SageMaker**
+   - Deploying the best-performing model to detect fraudulent transactions in real-time
 
-## Model Training
-- **Training Data:** Applied rescaling (rescale=1.0/255)
-- **Optimizer:** Adam
-- **Loss Function:** Categorical Cross Entropy
-- **Metrics:** Accuracy
-- **Epochs:** 10
-- **Validation Split:** 20% of data used for validation
 
-## Results
-- Achieved high accuracy and robustness across multiple models.
-- Effective preprocessing and data augmentation contributed to improved performance.
-- Comparison of models demonstrated superior performance of [Best Performing Model].
 
-## Conclusion
-- Successfully developed an automated brain tumor classification system using deep learning.
-- The system aids in early and accurate diagnosis, supporting medical professionals.
-- This approach enhances diagnostic efficiency and reduces human error in brain tumor detection.
+## References
+- [IEEE Paper on Fraud Detection](https://ieeexplore.ieee.org/document/10493954)
+- [ScienceDirect Research Article](https://www.sciencedirect.com/science/article/pii/S2666827024000793)
+- [Fraud Detection with AWS SageMaker](https://aws.amazon.com/blogs/machine-learning/detect-fraudulent-transactions-using-machine-learning-with-amazon-sagemaker/)
+- [IJCRT Research Paper](https://www.ijcrt.org/papers/IJCRT2408004.pdf)
 
-## Author
-- [R Pavani](https://www.linkedin.com/in/r-pavani/)
