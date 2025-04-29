@@ -1,4 +1,4 @@
-x# Brain Tumor Classification of MRI Images
+# Brain Tumor Classification of MRI Images
 
 ## Introduction
 Brain tumors are one of the most life-threatening medical conditions. Early and accurate diagnosis is crucial for effective treatment. Manual diagnosis is time-consuming and prone to human error. This project aims to enhance diagnostic accuracy using AI-driven image classification to categorize brain tumor MRI images into four classes:
@@ -67,3 +67,10 @@ Implemented and compared multiple models:
 
 ## Author
 - [R Pavani](https://www.linkedin.com/in/r-pavani/)
+- [GitHub](https://github.com/pavani-1510/)
+
+---
+
+© 2025 R Pavani. All rights reserved.
+
+---
