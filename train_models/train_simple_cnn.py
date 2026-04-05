@@ -8,7 +8,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 # Data Preparation
-data_dir = '/home/pavani-r/Documents/VSCODE/Datasets/Brain_MRI_dataset'
+data_dir = 'Datasets/Brain_MRI_dataset'
 input_size = (128, 128)
 batch_size = 32
 

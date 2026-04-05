@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D, D
 from tensorflow.keras.layers import BatchNormalization
 
 # === DATA PREPARATION ===
-data_dir = '/home/pavani-r/Documents/VSCODE/Datasets/Brain_MRI_dataset'
+data_dir = 'Datasets/Brain_MRI_dataset'
 input_size = (128, 128)
 batch_size = 32
 

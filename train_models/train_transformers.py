@@ -8,7 +8,7 @@ from tensorflow.keras.layers import (
 )
 
 # === DATA PREPARATION ===
-data_dir = '/home/pavani-r/Documents/VSCODE/Datasets/Brain_MRI_dataset'
+data_dir = 'Datasets/Brain_MRI_dataset'
 input_size = (128, 128)
 batch_size = 32
 

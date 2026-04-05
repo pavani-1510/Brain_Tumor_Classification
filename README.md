@@ -66,7 +66,6 @@ Implemented and compared multiple models:
 - This approach enhances diagnostic efficiency and reduces human error in brain tumor detection.
 
 ## Author
-- [R Pavani](https://www.linkedin.com/in/r-pavani/)
 - [GitHub](https://github.com/pavani-1510/)
 
 ---
