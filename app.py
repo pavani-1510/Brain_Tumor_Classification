@@ -22,13 +22,13 @@ class_labels = {
 }
 
 # Load models
-simple_cnn_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/simple_cnn_brain_tumor_model.h5')
-mobilenetv2_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/mobilenetv2_brain_tumor_model.h5')
-resnet50_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/resnet50_brain_tumor_model.h5')
-vgg16_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/vgg16_brain_tumor_model.h5')
-alexnet_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/alexnet_brain_tumor_model.h5')
-autoencoder_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/autoencoder_brain_tumor_model.h5')
-transformer_model = tf.keras.models.load_model('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/models/cnn_transformer_brain_tumor_model.h5')
+simple_cnn_model = tf.keras.models.load_model('/simple_cnn_brain_tumor_model.h5')
+mobilenetv2_model = tf.keras.models.load_model('/mobilenetv2_brain_tumor_model.h5')
+resnet50_model = tf.keras.models.load_model('/resnet50_brain_tumor_model.h5')
+vgg16_model = tf.keras.models.load_model('/vgg16_brain_tumor_model.h5')
+alexnet_model = tf.keras.models.load_model('/alexnet_brain_tumor_model.h5')
+autoencoder_model = tf.keras.models.load_model('/autoencoder_brain_tumor_model.h5')
+transformer_model = tf.keras.models.load_model('/cnn_transformer_brain_tumor_model.h5')
 
 
 # Heuristic check for MRI images
@@ -141,13 +141,13 @@ def predict():
         }
 
         accuracies = {
-            'simple_cnn': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/cnn_accuracy.txt'),
-            'mobilenetv2': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/mobilenetv2_accuracy.txt'),
-            'resnet50': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/resnet50_accuracy.txt'),
-            'vgg16': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/vgg16_accuracy.txt'),
-            'alexnet': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/alexnet_accuracy.txt'),
-            'autoencoder': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/autoencoder_accuracy.txt'),
-            'transformer': load_accuracy('/home/pavani-r/Documents/VSCODE/DL/Brain_Tumor_Classification/accuracy/cnn_transformer_accuracy.txt')
+            'simple_cnn': load_accuracy('/accuracy/cnn_accuracy.txt'),
+            'mobilenetv2': load_accuracy('/accuracy/mobilenetv2_accuracy.txt'),
+            'resnet50': load_accuracy('/accuracy/resnet50_accuracy.txt'),
+            'vgg16': load_accuracy('/accuracy/vgg16_accuracy.txt'),
+            'alexnet': load_accuracy('/accuracy/alexnet_accuracy.txt'),
+            'autoencoder': load_accuracy('/accuracy/autoencoder_accuracy.txt'),
+            'transformer': load_accuracy('/accuracy/cnn_transformer_accuracy.txt')
         }
 
         return render_template('index.html', results=results, accuracies=accuracies, file_path=file_path)
